@@ -32,9 +32,19 @@ export default {
 
 			var uri = server.split("_")[1] + "player/updateviplevel?nickname="+encodeURI(nickName)+"&viplevel="+this.vipLevel;
 			this.$http.get(uri).then(response => {
-				this.$message.success("修改vip成功");
+				// this.$message.success("修改vip成功");
+        this.$notify({
+          title: '成功',
+          message: '修改vip成功',
+          type: 'success'
+        });
 			}, response => {
-				this.$message.error("修改vip失败");
+				// this.$message.error("修改vip失败");
+        this.$notify.error({
+          title: '错误',
+          message: '修改vip失败',
+          type: 'error'
+        });
 			});
 		},
 		checkServerAndNickName(server, nickName) {

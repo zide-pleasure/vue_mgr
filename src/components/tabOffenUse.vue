@@ -49,9 +49,19 @@ export default {
 			var server = this.$store.state.app.serverAddress;
 			var uri = server.split("_")[1] + "admin/additem?nickname="+encodeURI(nickName)+"&itemId="+id+"&itemCount="+num;
 			this.$http.get(uri).then(response => {
-				this.$message.success("添加"+name+"成功");
+				// this.$message.success("添加"+name+"成功");
+        this.$notify({
+          title: '成功',
+          message: '添加'+name+'成功',
+          type: 'success'
+        });
 			}, response => {
-				this.$message.error("添加失败");
+				// this.$message.error("添加失败");
+        this.$notify({
+          title: '失败',
+          message: '添加'+name+'失败',
+          type: 'error'
+        });
 			});
 
 		}
