@@ -22,9 +22,7 @@
           </section>
         </el-tab-pane>
         <el-tab-pane label="增加物品">
-
           <addItem></addItem>
-
         </el-tab-pane>
         <el-tab-pane label="增加道具">
           <addTools></addTools>

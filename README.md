@@ -1,8 +1,8 @@
 # vue-mgr
 
-> back manage
+> backstage management system based on elementUI vue xuex
 
-## Build Setup
+## 项目构建命令 老生常谈的了
 
 ``` bash
 # install dependencies
@@ -17,5 +17,8 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+# element-ui
+
+>[element-ui](http://element-cn.eleme.io/#/zh-CN)
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
