@@ -33,11 +33,8 @@
         <el-tab-pane label="功能合集">
           <tabSmallFun></tabSmallFun>
         </el-tab-pane>
-        <el-tab-pane label="小工具">
-          <el-button type="primary" @click.native="goDownLoad(0)" href="">打包地址</el-button>
-          <el-button type="success" @click.native="goDownLoad(1)" href="">安装包下载地址</el-button>
-          <el-button type="success" @click.native="goDownLoad(2)" href="">UI编辑器下载地址</el-button>
-        </el-tab-pane>
+        <!-- <el-tab-pane label="小工具">
+        </el-tab-pane> -->
       </el-tabs>
     </section>
   </el-container>
@@ -93,12 +90,7 @@ export default {
   },
   data() {
     return {
-      serverList: [],
-      downloadUrl: [
-        'http://192.168.150.27:8080/jenkins/job/huoqubing/build?delay=0sec',
-        'http://192.168.150.27:8080/huoqubing/',
-        'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/master.zip'
-      ]
+      serverList: []
       // server: ""
       // nickName: ""
     }
@@ -137,10 +129,6 @@ export default {
         this.$message.error("服务器错误");
         // error callback
       });
-    },
-    goDownLoad(i) {
-      let url_ = this.downloadUrl[i];
-      window.open(url_);
     }
   },
   components: {
