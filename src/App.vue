@@ -34,8 +34,9 @@
           <tabSmallFun></tabSmallFun>
         </el-tab-pane>
         <el-tab-pane label="小工具">
-          <el-button type="primary" @click.native="goToDB()" href="">打包地址</el-button>
-          <el-button type="success" @click.native="goToDownLoad()" href="">安装包下载地址</el-button>
+          <el-button type="primary" @click.native="goDownLoad(0)" href="">打包地址</el-button>
+          <el-button type="success" @click.native="goDownLoad(1)" href="">安装包下载地址</el-button>
+          <el-button type="success" @click.native="goDownLoad(2)" href="">UI编辑器下载地址</el-button>
         </el-tab-pane>
       </el-tabs>
     </section>
@@ -92,7 +93,12 @@ export default {
   },
   data() {
     return {
-      serverList: []
+      serverList: [],
+      downloadUrl: [
+        'http://192.168.150.27:8080/jenkins/job/huoqubing/build?delay=0sec',
+        'http://192.168.150.27:8080/huoqubing/',
+        'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/master.zip'
+      ]
       // server: ""
       // nickName: ""
     }
@@ -132,11 +138,9 @@ export default {
         // error callback
       });
     },
-    goToDownLoad() {
-      window.open("http://192.168.150.27:8080/huoqubing/");
-    },
-    goToDB() {
-      window.open("http://192.168.150.27:8080/jenkins/job/huoqubing/build?delay=0sec");
+    goDownLoad(i) {
+      let url_ = this.downloadUrl[i];
+      window.open(url_);
     }
   },
   components: {
