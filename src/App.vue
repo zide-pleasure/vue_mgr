@@ -27,6 +27,9 @@
         <el-tab-pane label="增加道具">
           <addTools></addTools>
         </el-tab-pane>
+        <el-tab-pane label="活动充值">
+          <actRecharge></actRecharge>
+        </el-tab-pane>
         <el-tab-pane label="功能合集">
           <tabSmallFun></tabSmallFun>
         </el-tab-pane>
@@ -44,6 +47,7 @@ import tabOffenUse from './components/tabOffenUse'
 import addItem from './components/addItem'
 import addTools from './components/addTools'
 import tabSmallFun from './components/tabSmallFun'
+import actRecharge from './components/actRecharge'
 export default {
   mounted() {
     var url = "http://192.168.130.39:8000/serverlist?uid=&product=1&version=0.1.23&channel=none&group=5.4";
@@ -139,6 +143,7 @@ export default {
     tabOffenUse,
     addItem,
     addTools,
+    actRecharge,
     tabSmallFun
   }
 }

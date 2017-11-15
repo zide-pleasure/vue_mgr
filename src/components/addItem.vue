@@ -21,6 +21,15 @@
 				</template>
     </el-table-column>
   </el-table>
+
+  <el-pagination
+  @size-change="handleSizeChange"
+  @current-change="handleCurrentChange"
+  :current-page.sync="currentPage"
+  :page-size="100"
+  layout="total, prev, pager, next"
+  :total="originItems.length">
+  </el-pagination>
 </div>
 </template>
 
@@ -30,6 +39,7 @@ export default {
   data() {
     return {
       queryName: "",
+      currentPage: 1,
       addNum: 0
     }
   },
@@ -37,6 +47,21 @@ export default {
     handleSearch(ev) {
       this.doSearch();
     },
+    //每页显示数据量变更
+    handleSizeChange: function(val) {
+      this.pagesize = val;
+      // this.loadData(this.criteria, this.currentPage, this.pagesize);
+      console.log("fangzide");
+    },
+
+    //页码变更
+    handleCurrentChange: function(val) {
+      console.log("fangzide+===" + this.currentPage);
+      // this.currentPage = val;
+      this.$store.commit("INIT_PAGRINFO", this.currentPage);
+      // this.loadData(this.criteria, this.currentPage, this.pagesize);
+    },
+
     doSearch() {
       var server = this.$store.state.app.serverAddress;
       if (!server) {
@@ -78,6 +103,11 @@ export default {
     items: {
       get() {
         return this.$store.state.app.items;
+      },
+    },
+    originItems: {
+      get() {
+        return this.$store.state.app.originItems;
       },
     }
   },
