@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-table :data="items2" stripe border max-height="600" style="width:800px;">
-    <el-table-column prop="id" label="ItemId" width="250"> </el-table-column>
+    <el-table-column prop="itemId" label="ItemId" width="250"> </el-table-column>
     <el-table-column prop="name" label="名称" width="250"> </el-table-column>
     <el-table-column label="操作" width="300">
       <template slot-scope="scope">
@@ -38,7 +38,7 @@ export default {
         this.$message.error("请填写昵称");
         return;
       }
-      var uri = server.split("_")[1] + "admin/additem?nickname=" + encodeURI(nickName) + "&itemId=" + row.id + "&itemCount=" + num;
+      var uri = server.split("_")[1] + "admin/additem?nickname=" + encodeURI(nickName) + "&itemId=" + row.itemId + "&itemCount=" + num;
       this.$http.get(uri).then(response => {
         // this.$message.success("添加成功");
         this.$notify({

@@ -38,6 +38,7 @@ const app = {
     },
     FILTER_ITEMS(state, queryName) {
       var newArr = [];
+      var re = /^[1-9]+[0-9]*]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/
       if (queryName.length <= 0) {
         state.items = state.originItems.slice(0, 100);
         // state.items = state.originItems;

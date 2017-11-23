@@ -101,34 +101,58 @@ export default {
       // console.log("server_choose===" + this.server);
       console.log(this.server);
       var address = this.server.split("_")[1];
-      this.$http.get("http://192.168.130.33:8080" + '/admin/additemhtml').then(response => {
-        var parser = new DOMParser();
-        var cheerio = require('cheerio');
-        var $ = cheerio.load(response.bodyText, {
-          xmlMode: false
-        });
-        var itemArr = [];
-        var itemArr2 = []; // 道具item
-        var trElements = $('tr').each(function(i, item) {
-          if ($(this).children().last().prev().text().substring(0, 1) == 5) {
-            itemArr.push({
-              id: $(this).children().last().prev().text(),
-              name: $(this).children().last().text()
-            })
-          } else {
-            itemArr2.push({
-              id: $(this).children().last().prev().text(),
-              name: $(this).children().last().text()
-            })
-          }
-        });
+      this.$http.get("http://192.168.130.13:8091" + '/admin/api/Item/5').then(response => {
+				console.log(response);
+				var itemArr = [];
+				itemArr = response.body.domainObject;
+	      // var itemArr2 = []; // 道具item
         this.$store.commit("INIT_ITEMS", itemArr);
+        // this.$store.commit("INIT_ITEMS2", itemArr2);
+        this.$message.success("成功获取item列表");
+      }, response => {
+        this.$message.error("服务器错误");
+        // error callback
+      });
+      this.$http.get("http://192.168.130.13:8091" + '/admin/api/Item/4').then(response => {
+				console.log(response);
+				// var itemArr = [];
+				 var itemArr2 = []; // 道具item
+				itemArr2 = response.body.domainObject;
+        // this.$store.commit("INIT_ITEMS", itemArr);
         this.$store.commit("INIT_ITEMS2", itemArr2);
         this.$message.success("成功获取item列表");
       }, response => {
         this.$message.error("服务器错误");
         // error callback
       });
+      // this.$http.get("http://192.168.130.13:8080" + '/admin/additemhtml').then(response => {
+      //   var parser = new DOMParser();
+      //   var cheerio = require('cheerio');
+      //   var $ = cheerio.load(response.bodyText, {
+      //     xmlMode: false
+      //   });
+      //   var itemArr = [];
+      //   var itemArr2 = []; // 道具item
+      //   var trElements = $('tr').each(function(i, item) {
+      //     if ($(this).children().last().prev().text().substring(0, 1) == 5) {
+      //       itemArr.push({
+      //         id: $(this).children().last().prev().text(),
+      //         name: $(this).children().last().text()
+      //       })
+      //     } else {
+      //       itemArr2.push({
+      //         id: $(this).children().last().prev().text(),
+      //         name: $(this).children().last().text()
+      //       })
+      //     }
+      //   });
+      //   this.$store.commit("INIT_ITEMS", itemArr);
+      //   this.$store.commit("INIT_ITEMS2", itemArr2);
+      //   this.$message.success("成功获取item列表");
+      // }, response => {
+      //   this.$message.error("服务器错误");
+      //   // error callback
+      // });
     }
   },
   components: {
