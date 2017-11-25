@@ -32,7 +32,8 @@ const app = {
       state.items = newArr;
     },
     INIT_ITEMS2(state, itemArr) {
-      state.items2 = itemArr.slice(0, 100);
+      state.items2 = itemArr;
+      // state.items2 = itemArr.slice(0, 100);
       // state.items = itemArr;
       state.originItems2 = itemArr.slice();
     },
