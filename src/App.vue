@@ -16,11 +16,11 @@
     <section>
       <!-- 选项卡 -->
       <el-tabs tab-position="left" type="border-card">
-        <el-tab-pane label="常用物品">
+        <!-- <el-tab-pane label="常用物品">
           <section style="padding:0 250px 1px 1px;">
             <tabOffenUse></tabOffenUse>
           </section>
-        </el-tab-pane>
+        </el-tab-pane> -->
         <el-tab-pane label="增加物品">
           <addItem></addItem>
         </el-tab-pane>

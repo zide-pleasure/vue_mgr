@@ -38,38 +38,75 @@ const app = {
       state.originItems2 = itemArr.slice();
     },
     FILTER_ITEMS(state, queryName) {
-      var newArr = [];
-      var re = /^[1-9]+[0-9]*]*$/; //判断字符串是否为数字 //判断正整数 /^[1-9]+[0-9]*]*$/
-      if (queryName.length <= 0) {
-        state.items = state.originItems.slice(0, 100);
-        // state.items = state.originItems;
-        return;
-      };
-      state.originItems.every((element, index) => {
-        var searchId = false;
-        var idStr = "";
-        if (queryName.length >= 5) {
-          idStr = parseInt(queryName) + "";
-          if (idStr.length >= 5) {
-            searchId = true;
-          };
-        };
-        if (searchId) {
-          var str = element.id + "";
-          var index = str.indexOf((idStr))
-          if (index !== -1) {
-            newArr.push(element);
-          };
-        } else {
-          var result = element.name.toLowerCase().indexOf(queryName.toLowerCase());
-          if (result !== -1) {
-            newArr.push(element);
-          }
-        };
-        return true;
-      });
-      state.items = newArr;
-    }
+			var newArr = [];
+			if (queryName.length <= 0) {
+				state.items = state.originItems.slice(0, 100);
+				return;
+			};
+			state.originItems.every((element, index) => {
+				var searchId = false;
+        var re = /^[1-9]+[0-9]*]*$/ ;
+				var idStr = "";
+        // console.log(re.test(queryName));
+				if (re.test(queryName) && queryName.length > 3) {
+					idStr = parseInt(queryName)+"";
+					// if (idStr.length >=5) {
+						searchId = true;
+					// };
+				};
+				if (searchId) {
+					var str = element.itemId + "";
+					var index = str.indexOf(idStr)
+          // console.log(element.itemId);
+					if (index !== -1) {
+						newArr.push(element);
+					};
+				}
+				else {
+					var result = element.name.toLowerCase().indexOf(queryName.toLowerCase());
+					if(result !== -1) {
+						newArr.push(element);
+					}
+				};
+				return true;
+			});
+			state.items = newArr;
+		},
+    FILTER_TOOLS(state, queryName) {
+			var newArr = [];
+			if (queryName.length <= 0) {
+				state.items2 = state.originItems.slice(0, 100);
+				return;
+			};
+			state.originItems2.every((element, index) => {
+				var searchId = false;
+        var re = /^[1-9]+[0-9]*]*$/ ;
+				var idStr = "";
+        // console.log(re.test(queryName));
+				if (re.test(queryName) && queryName.length > 3) {
+					idStr = parseInt(queryName)+"";
+					// if (idStr.length >=5) {
+						searchId = true;
+					// };
+				};
+				if (searchId) {
+					var str = element.itemId + "";
+					var index = str.indexOf(idStr)
+          // console.log(element.itemId);
+					if (index !== -1) {
+						newArr.push(element);
+					};
+				}
+				else {
+					var result = element.name.toLowerCase().indexOf(queryName.toLowerCase());
+					if(result !== -1) {
+						newArr.push(element);
+					}
+				};
+				return true;
+			});
+			state.items2 = newArr;
+		}
   },
   actions: {},
 };

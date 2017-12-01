@@ -3,8 +3,10 @@
   <el-row>
     <el-col :span="8">
       物品名称过滤器:
-      <el-input style="padding:15px 0" width="200" placeholder="请输入物品名称或id(id长大于或等于5, 回车查询)" v-model="queryName" @keyup.enter.native="handleSearch">
+      <el-input style="padding:15px 0" width="200" placeholder="请输入物品名称或id(回车查询)" v-model="queryName" @keyup.enter.native="handleSearch">
       </el-input>
+      <!-- 点击选择常用筛选: -->
+      <el-button v-for="item in itemm" type="text" @click.native = "handleOfenSearch(item.value)">{{item.value}}</el-button>
     </el-col>
   </el-row>
   <el-table :data="items" stripe border max-height="600" style="width:800px;">
@@ -40,11 +42,23 @@ export default {
     return {
       queryName: "",
       currentPage: 1,
+      itemm: [
+        {value: "蓝"},
+        {value: "紫"},
+        {value: "橙"},
+        {value: "武器20"},
+        {value: "武器50"},
+        {value: "武器100"}
+      ],
       addNum: 0
     }
   },
   methods: {
     handleSearch(ev) {
+      this.doSearch();
+    },
+    handleOfenSearch(e) {
+      this.queryName = e;
       this.doSearch();
     },
     //每页显示数据量变更
