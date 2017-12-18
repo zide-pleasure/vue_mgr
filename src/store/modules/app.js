@@ -75,7 +75,7 @@ const app = {
     FILTER_TOOLS(state, queryName) {
 			var newArr = [];
 			if (queryName.length <= 0) {
-				state.items2 = state.originItems.slice(0, 100);
+				state.items2 = state.originItems2.slice(0, 100);
 				return;
 			};
 			state.originItems2.every((element, index) => {

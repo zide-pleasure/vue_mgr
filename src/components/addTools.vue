@@ -38,6 +38,7 @@ export default {
         {value: "图鉴"},
         {value: "经验"},
         {value: "战功"},
+        {value: "魂石"},
         {value: "玉"}
       ]
       // addNum: 0
