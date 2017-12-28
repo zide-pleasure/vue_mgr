@@ -30,8 +30,10 @@
     <hr>
   </el-row>
   <el-row>
-    <el-button type="success" @click.native="goDownLoad(2)" href="">UI编辑器下载地址</el-button>
+    <el-button type="success" @click.native="goDownLoad(2)" href="">hl-uieditor-hqb</el-button>
+      <el-button type="success" @click.native="goDownLoad(3)" href="">UI编辑器windows版本下载</el-button>
   </el-row>
+
   <el-row>
     <hr>
   </el-row>
@@ -133,7 +135,9 @@ export default {
       downloadUrl: [
         'http://192.168.150.27:8080/jenkins/job/huoqubing/build?delay=0sec',
         'http://192.168.150.27:8080/huoqubing/',
-        'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/master.zip'
+        'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/hqb.zip',
+        // 'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/master.zip',
+        ' http://192.168.140.59/AtomUIEditorWin.zip'
       ],
       pid: ""
     };
