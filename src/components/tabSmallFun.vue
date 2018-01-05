@@ -43,6 +43,18 @@
   <el-row>
     <hr>
   </el-row>
+  <el-row>
+      <div style="display:inline-block; width:210px;">
+    <el-input placeholder="groupId" size="groupId" v-model="groupId"> </el-input>
+    </div>
+      <div style="display:inline-block; width:210px;">
+    <el-input placeholder="noviceId" size="noviceId" v-model="noviceId"> </el-input>
+        </div>
+      <el-button type="success" @click="handleNovice">Novice</el-button>
+  </el-row>
+  <el-row>
+    <hr>
+  </el-row>
 </div>
 </template>
 
@@ -71,6 +83,36 @@ export default {
           })
         } else {
           this.pid = response.body[0];
+        }
+      }, response => {
+        this.$message({
+          showClose: true,
+          message: "未知错误",
+          type: 'error'
+        })
+      });
+    },
+    handleNovice() {
+      this.pid = "";
+      var nickName = this.$store.state.app.nickName;
+      var server = this.$store.state.app.serverAddress;
+      if (!this.checkServerAndNickName(server, nickName)) {
+        return;
+      }
+      var uri = server.split("_")[1] + "admin/novice?nickname=" + encodeURI(nickName) + "&groupId=" + this.groupId + "&noviceId=" + this.noviceId;
+      this.$http.get(uri).then(response => {
+        if (typeof response.body == 'string') {
+          this.$message({
+            showClose: true,
+            message: '请求成功',
+            type: 'success'
+          })
+        } else {
+          this.$message({
+            showClose: true,
+            message: '未查询到结果',
+            type: 'warning'
+          })
         }
       }, response => {
         this.$message({
@@ -139,7 +181,9 @@ export default {
         // 'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/master.zip',
         ' http://192.168.140.59/AtomUIEditorWin.zip'
       ],
-      pid: ""
+      pid: "",
+      groupId: "",
+      noviceId: ""
     };
   }
 }

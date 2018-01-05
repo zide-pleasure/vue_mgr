@@ -6,7 +6,7 @@
       <el-input style="padding:15px 0" width="200" placeholder="请输入道具名称或id(回车查询)" v-model="queryName" @keyup.enter.native="doSearch">
       </el-input>
       <!-- 点击选择常用筛选: -->
-      <el-button v-for="item in itemm" type="text" @click.native = "handleOfenSearch(item.value)">{{item.value}}</el-button>
+      <el-button v-for="item1 in itemm" type="text" @click.native = "handleOfenSearch(item1.value)">{{item1.value}}</el-button>
     </el-col>
   </el-row>
   <el-table :data="items2" stripe border max-height="600" style="width:800px;">

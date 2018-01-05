@@ -33,6 +33,9 @@
         <el-tab-pane label="功能合集">
           <tabSmallFun></tabSmallFun>
         </el-tab-pane>
+        <el-tab-pane label="考勤日常">
+          <dailySign></dailySign>
+        </el-tab-pane>
         <!-- <el-tab-pane label="小工具">
         </el-tab-pane> -->
       </el-tabs>
@@ -45,6 +48,7 @@ import tabOffenUse from './components/tabOffenUse'
 import addItem from './components/addItem'
 import addTools from './components/addTools'
 import tabSmallFun from './components/tabSmallFun'
+import dailySign from './components/dailySign'
 import actRecharge from './components/actRecharge'
 export default {
   mounted() {
@@ -160,6 +164,7 @@ export default {
     addItem,
     addTools,
     actRecharge,
+    dailySign,
     tabSmallFun
   }
 }
