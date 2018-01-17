@@ -52,7 +52,7 @@ import dailySign from './components/dailySign'
 import actRecharge from './components/actRecharge'
 export default {
   mounted() {
-    var url = "http://192.168.130.39:8000/serverlist?uid=&product=1&version=0.1.23&channel=none&group=5.4";
+    var url = "http://10.0.3.30:8000/serverlist?uid=&product=1&version=0.1.23&channel=none&group=5.4";
     this.$http.get(url).then(response => {
       var serverList = response.body.serverList
       serverList.forEach(function(serverData) {
@@ -105,7 +105,7 @@ export default {
       // console.log("server_choose===" + this.server);
       console.log(this.server);
       var address = this.server.split("_")[1];
-      this.$http.get("http://192.168.130.13:8091" + '/admin/api/Item/5').then(response => {
+      this.$http.get("http://10.0.3.36:8091" + '/admin/api/Item/5').then(response => {
 				console.log(response);
 				var itemArr = [];
 				itemArr = response.body.domainObject;
@@ -117,7 +117,7 @@ export default {
         this.$message.error("服务器错误");
         // error callback
       });
-      this.$http.get("http://192.168.130.13:8091" + '/admin/api/Item/4').then(response => {
+      this.$http.get("http://10.0.3.36:8091" + '/admin/api/Item/4').then(response => {
 				console.log(response);
 				// var itemArr = [];
 				 var itemArr2 = []; // 道具item

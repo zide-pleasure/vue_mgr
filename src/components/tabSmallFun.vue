@@ -175,8 +175,10 @@ export default {
     return {
       vipLevel: 7,
       downloadUrl: [
-        'http://192.168.150.27:8080/jenkins/job/huoqubing/build?delay=0sec',
-        'http://192.168.150.27:8080/huoqubing/',
+        // 'http://192.168.150.27:8080/jenkins/job/huoqubing/build?delay=0sec',
+        // 'http://192.168.150.27:8080/huoqubing/',
+        'http://10.0.3.97:8080/jenkins/job/huoqubing/',
+        'http://10.0.3.97:8080/huoqubing/',
         'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/hqb.zip',
         // 'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/master.zip',
         ' http://192.168.140.59/AtomUIEditorWin.zip'

@@ -8,7 +8,7 @@
            <el-table
                   :data="props.row.reasons"
                   border
-                   size ="small"
+                  size ="small"
                    :row-style = "rowStyle"
                   style="width: 100%">
                   <el-table-column
