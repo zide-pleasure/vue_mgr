@@ -61,7 +61,7 @@
 <script>
 export default {
   mounted() {
-    var url = "http://192.168.130.13:3000/data/read?type=manager";
+    var url = "http://10.0.3.36:3000/data/read?type=manager";
       // console.log("http://192.168.130.13:3000/data/manager.json");
     this.$http.get(url).then(response => {
       let signData = response.data.data;
@@ -146,6 +146,12 @@ export default {
         {
           id: '13',
           name: '毛有斌',
+          score: 0,
+          reasons: []
+        },
+        {
+          id: '14',
+          name: '李俊峰',
           score: 0,
           reasons: []
         }

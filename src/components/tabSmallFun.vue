@@ -44,6 +44,12 @@
     <hr>
   </el-row>
   <el-row>
+    <el-button type="success" @click="skipNewgain">跳过新手</el-button>
+  </el-row>
+  <el-row>
+    <hr>
+  </el-row>
+  <el-row>
       <div style="display:inline-block; width:210px;">
     <el-input placeholder="groupId" size="groupId" v-model="groupId"> </el-input>
     </div>
@@ -122,6 +128,28 @@ export default {
         })
       });
     },
+    skipNewgain() {
+      this.pid = "";
+      var nickName = this.$store.state.app.nickName;
+      var server = this.$store.state.app.serverAddress;
+      if (!this.checkServerAndNickName(server, nickName)) {
+        return;
+      }
+      var uri = server.split("_")[1] + "admin/skipnovice?nickname=" + encodeURI(nickName);
+      this.$http.get(uri).then(response => {
+          this.$message({
+            showClose: true,
+            message: '跳过新手成功',
+            type: 'success'
+          })
+      }, response => {
+        this.$message({
+          showClose: true,
+          message: "跳过新手失败",
+          type: 'error'
+        })
+      });
+    },
     goDownLoad(i) {
       let url_ = this.downloadUrl[i];
       window.open(url_);
@@ -181,7 +209,8 @@ export default {
         'http://10.0.3.97:8080/huoqubing/',
         'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/hqb.zip',
         // 'http://code.hoolai.com/AuroraEngine/hl-uieditor/archive/master.zip',
-        ' http://192.168.140.59/AtomUIEditorWin.zip'
+        'http://10.0.2.93/AtomUiEditorWin.zip'
+        // ' http://192.168.140.59/AtomUIEditorWin.zip'
       ],
       pid: "",
       groupId: "",
